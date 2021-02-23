@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            padding: 10px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-row-gap: 100px;
+        }
+        
+        .scene {
+            margin: 5px;
+            background: #ccc;
+            height: 400px;
+            padding: 10px;
+            display: block;
+            position: relative;
+        }
+        
+        .scene img {
+            display: block;
+        }
+        
+        .scene img {
+            display: inline-block;
+        }
+        
+        .scene h2 {
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            width: 100%;
+        }
+        
+        .scene1 .ring,
+        .scene2 .ring {
+            margin-left: -50px;
+        }
+        
+        .scene2 .duck {
+            opacity: .99;
+        }
+        
+        .scene3 .ring-purple,
+        .scene3 .duck,
+        .scene4 .ring-purple,
+        .scene4 .duck {
+            margin-left: -50px;
+        }
+        
+        .scene4 .duck {
+            transform: rotate(10deg);
+        }
+        
+        .scene5 .duck,
+        .scene6 .duck,
+        .scene7 .duck {
+            margin-left: -50px;
+        }
+        
+        .scene6 .ring,
+        .scene7 .ring {
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+        }
+        
+        .scene7 .duck {
+            /*
+            To make the duck appear in front of the ring, we need to add a stacking context to it with a z-index other than auto.
+            */
+            position: relative;
+            z-index: 1;
+        }
+        
+        .scene8,
+        .scene9,
+        .scene10 {
+            display: -webkit-box;
+        }
+        
+        .scene8 .ring-red,
+        .scene9 .ring-red,
+        .scene10 .ring-red,
+        .scene11 .ring-red,
+        .scene12 .ring-red,
+        .scene13 .ring-red,
+        .scene14 .ring-red {
+            width: 154px;
+            height: 140px;
+            background: url('https://ishadeed.com/assets/z-index/img/ring-red.svg');
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .scene8 .mosquito,
+        .scene9 .mosquito,
+        .scene10 .mosquito {
+            margin-top: -40px;
+            margin-left: -64px;
+        }
+        
+        .scene8 .ring-purple,
+        .scene9 .ring-purple,
+        .scene10 .ring-purple {
+            margin-left: -65px;
+            margin-top: -50px;
+        }
+        
+        .scene9,
+        .scene10 {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .scene9 .duck,
+        .scene10 .duck {
+            position: relative;
+            z-index: 1;
+        }
+        /* start*/
+        
+        .scene10 .ring-red {
+            position: relative;
+            z-index: 1;
+        }
+        /*//solution 2*/
+        /* .scene10 .ring-purple {
+            position: relative;
+            z-index: -1;
+        } */
+        /* finish*/
+        
+        .scene11,
+        .scene12,
+        .scene13,
+        .scene14 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .scene11 .ring-red,
+        .scene12 .ring-red {
+            webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
+        }
+        
+        .scene11 .fish-small,
+        .scene12 .fish-small {
+            position: absolute;
+            left: 1rem;
+            top: 1rem;
+        }
+        
+        .scene11 .fish-large,
+        .scene12 .fish-large,
+        .scene13 .fish-large,
+        .scene14 .fish-large {
+            width: 90px;
+            margin-left: -45px;
+        }
+        
+        .scene12 {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .scene12 .ring-red {
+            transform: none;
+        }
+        
+        .scene13 .fish-large,
+        .scene14 .fish-large {
+            transform: scaleX(-1);
+        }
+        
+        .scene13 .duck,
+        .scene14 .duck {
+            margin-right: -50px;
+        }
+        
+        .scene13,
+        .scene14 {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .scene13 .fish,
+        .scene14 .fish {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .scene13 .ring-red,
+        .scene14 .ring-red {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .scene14 .fish {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .scene14 .ring-red {
+            position: static;
+            z-index: auto;
+        }
+        
+        .scene14 .duck {
+            position: relative;
+            z-index: 3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div>
+
+            <h1>What creates a new stacking context?</h1>
+        </div>
+        <div></div>
+        <div></div>
+        <div class="scene scene1">
+            <img src="https://ishadeed.com/assets/z-index/img/duck.svg" class="duck">
+            <img src="https://ishadeed.com/assets/z-index/img/ring-red.svg" class="ring">
+            <h2>Opacity Stacking Context</h2>
+        </div>
+
+        <div class="scene scene2">
+            <img src="https://ishadeed.com/assets/z-index/img/duck.svg" class="duck">
+            <img src="https://ishadeed.com/assets/z-index/img/ring-red.svg" class="ring">
+            <h2>Opacity Stacking Context</h2>
+        </div>
+
+        <div></div>
+
+        <div class="scene scene3">
+            <img src="https://ishadeed.com/assets/z-index/img/ring-red.svg" class="ring-red ">
+            <img src="https://ishadeed.com/assets/z-index/img/duck.svg" class="duck">
+            <img src="https://ishadeed.com/assets/z-index/img/ring-purple.svg" class="ring-purple">
+            <h2>CSS transforms</h2>
+        </div>
+
+        <div class="scene scene4">
+            <img src="https://ishadeed.com/assets/z-index/img/ring-red.svg" class="ring-red ">
+            <img src="https://ishadeed.com/assets/z-index/img/duck.svg" class="duck">
+            <img src="https://ishadeed.com/assets/z-index/img/ring-purple.svg" class="ring-purple">
+            <h2>CSS transforms</h2>
+        </div>
+        <div></div>
+
+        <div class="scene scene5">
+            <img src="https://ishadeed.com/assets/z-index/img/ring-red.svg" class="ring ">
+            <img src="https://ishadeed.com/assets/z-index/img/duck.svg" class="duck">
+            <h2>Clip Path</h2>
+        </div>
+        <div class="scene scene6">
+            <img src="https://ishadeed.com/assets/z-index/img/ring-red.svg" class="ring ">
+            <img src="https://ishadeed.com/assets/z-index/img/duck.svg" class="duck">
+            <h2>Clip Path</h2>
+        </div>
+        <div class="scene scene7">
+            <img src="https://ishadeed.com/assets/z-index/img/ring-red.svg" class="ring ">
+            <img src="https://ishadeed.com/assets/z-index/img/duck.svg" class="duck">
+            <h2>Clip Path</h2>
+        </div>
+        <div class="scene scene8">
+            <div class="ring ring-red">
+                <img src="https://ishadeed.com/assets/z-index/img/duck.svg" class="duck">
+                <img src="https://ishadeed.com/assets/z-index/img/mosquito.svg" class="mosquito">
+            </div>
+            <img src=" https://ishadeed.com/assets/z-index/img/ring-purple.svg" class="ring-purple">
+            <h2>Example 1: The duck and the mosquito
+            </h2>
+        </div>
+        <div class="scene scene9">
+            <div class="ring ring-red">
+                <img src="https://ishadeed.com/assets/z-index/img/duck.svg" class="duck">
+                <img src="https://ishadeed.com/assets/z-index/img/mosquito.svg" class="mosquito">
+            </div>
+            <img src=" https://ishadeed.com/assets/z-index/img/ring-purple.svg" class="ring-purple">
+            <h2>Example 1: The duck and the mosquito
+            </h2>
+        </div>
+
+        <div class="scene scene10">
+            <div class="ring ring-red">
+                <img src="https://ishadeed.com/assets/z-index/img/duck.svg" class="duck">
+                <img src="https://ishadeed.com/assets/z-index/img/mosquito.svg" class="mosquito">
+            </div>
+            <img src=" https://ishadeed.com/assets/z-index/img/ring-purple.svg" class="ring-purple">
+            <h2>Example 1: The duck and the mosquito
+            </h2>
+        </div>
+        <div class="scene scene11">
+            <div class="ring ring-red">
+                <img src="https://ishadeed.com/assets/z-index/img/duck.svg" class="duck">
+            </div>
+            <img class="fish fish-small" src="https://ishadeed.com/assets/z-index/img/fish.svg" alt="">
+            <img class="fish fish-large" src="https://ishadeed.com/assets/z-index/img/fish.svg" alt="">
+            <h2>Example 2: Feeding the duck
+            </h2>
+        </div>
+        <div class="scene scene12">
+            <div class="ring ring-red">
+                <img src="https://ishadeed.com/assets/z-index/img/duck.svg" class="duck">
+            </div>
+            <img class="fish fish-small" src="https://ishadeed.com/assets/z-index/img/fish.svg" alt="">
+            <img class="fish fish-large" src="https://ishadeed.com/assets/z-index/img/fish.svg" alt="">
+            <h2>Example 2: Feeding the duck
+            </h2>
+        </div>
+
+
+        <div></div>
+
+        <div class="scene scene13">
+            <div class="ring ring-red">
+                <img src="https://ishadeed.com/assets/z-index/img/duck.svg" class="duck">
+            </div>
+            <img class="fish fish-large" src="https://ishadeed.com/assets/z-index/img/fish.svg" alt="">
+            <h2>Example 3: z-index: 9999
+
+            </h2>
+        </div>
+        <div class="scene scene14">
+            <div class="ring ring-red">
+                <img src="https://ishadeed.com/assets/z-index/img/duck.svg" class="duck">
+            </div>
+            <img class="fish fish-large" src="https://ishadeed.com/assets/z-index/img/fish.svg" alt="">
+            <h2>Example 3: z-index: 9999
+
+            </h2>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

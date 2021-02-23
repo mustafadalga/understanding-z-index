@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            padding: 10px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-row-gap: 100px;
+        }
+        
+        .scene {
+            margin: 5px;
+            background: #ccc;
+            width: 300px;
+            height: 300px;
+            padding: 10px;
+            display: block;
+        }
+        
+        .scene img {
+            display: block;
+        }
+        
+        .scene2 .ring {
+            margin-top: -28px;
+        }
+        
+        .scene3 .ring {
+            /*The ring has moved a bit. Notice how it’s in top of the duck. This is because latter elements in the HTML are displayed in front of former ones.*/
+            margin-top: -28px;
+        }
+        
+        .scene3 .duck {
+            /*Positioned elements appear in front of non-positioned ones.*/
+            position: relative;
+        }
+        /* Start */
+        
+        .scene4 img {
+            margin-top: -75px;
+        }
+        
+        .scene5 img {
+            margin-top: -75px;
+        }
+        
+        .scene5 .kid {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .scene5 .ring {
+            position: relative;
+            z-index: 1;
+        }
+        /* Finish */
+        
+        .scene7 .duck {
+            position: relative;
+            z-index: -1;
+        }
+        
+        .scene8 {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .scene8 .duck {
+            position: relative;
+            z-index: -1;
+            /*
+            Now, the duck can’t go behind its parent even if you add z-index: -9999 to it. Why? Because the duck is a part of the water stacking context.
+            */
+        }
+        
+        .scene9 {
+            z-index: 1;
+        }
+        
+        .scene9 .ring {
+            position: relative;
+            z-index: -1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="scene scene1">
+            <img src="https://ishadeed.com/assets/z-index/img/duck.svg" class="duck">
+            <img src="https://ishadeed.com/assets/z-index/img/ring-red.svg" class="ring">
+        </div>
+
+        <div class="scene scene2">
+            <img src="https://ishadeed.com/assets/z-index/img/duck.svg" class="duck">
+            <img src="https://ishadeed.com/assets/z-index/img/ring-red.svg" class="ring">
+        </div>
+
+        <div class="scene scene3">
+            <img src="https://ishadeed.com/assets/z-index/img/duck.svg" class="duck">
+            <img src="https://ishadeed.com/assets/z-index/img/ring-red.svg" class="ring">
+        </div>
+
+        <div class="scene scene4 pool">
+            <img class="kid" src="https://ishadeed.com/assets/z-index/img/boy.svg" />
+            <img class="ring" src="https://ishadeed.com/assets/z-index/img/ring.svg" />
+            <img class="water" src="https://ishadeed.com/assets/z-index/img/water.svg" />
+        </div>
+
+        <div class="scene scene5 pool">
+            <img class="kid" src="https://ishadeed.com/assets/z-index/img/boy.svg" />
+            <img class="ring" src="https://ishadeed.com/assets/z-index/img/ring.svg" />
+            <img class="water" src="https://ishadeed.com/assets/z-index/img/water.svg" />
+        </div>
+        <div></div>
+
+        <div class="scene scene6">
+            <img src="https://ishadeed.com/assets/z-index/img/duck.svg" class="duck">
+            <img src="https://ishadeed.com/assets/z-index/img/ring-red.svg" class="ring">
+        </div>
+        <div class="scene scene7">
+            <img src="https://ishadeed.com/assets/z-index/img/duck.svg" class="duck">
+            <img src="https://ishadeed.com/assets/z-index/img/ring-red.svg" class="ring">
+        </div>
+        <div class="scene scene8">
+            <img src="https://ishadeed.com/assets/z-index/img/duck.svg" class="duck">
+            <img src="https://ishadeed.com/assets/z-index/img/ring-red.svg" class="ring">
+        </div>
+        <div class="scene scene9">
+            <img src="https://ishadeed.com/assets/z-index/img/ring-red.svg" class="ring">
+        </div>
+    </div>
+
+
+</body>
+
+</html>
